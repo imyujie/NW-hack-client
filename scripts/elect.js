@@ -8,6 +8,7 @@ function htmlDecode (str) {
   str = htmlDec(str);
   return str.match(/<textarea>(.+)<\/textarea>/)[1];
 }
+var idx = 0;
 process.on('message', function(m) {
   cookie = request.cookie(m.cookies);
   j.setCookie(cookie, 'http://uems.sysu.edu.cn/elect', function (err, cookie){});
@@ -15,20 +16,27 @@ process.on('message', function(m) {
   var jxbh = m.jxbh;
 
   function postElect() {
-    console.log('electing!', jxbh);
-    request.post({url: 'http://uems.sysu.edu.cn/elect/s/elect', form: {sid: sid, jxbh: jxbh}, jar: j, timeout: 5000}, function (err, res, body) {
+    request.post({url: 'http://uems.sysu.edu.cn/elect/s/elect', form: {sid: sid, jxbh: jxbh}, jar: j, timeout: 6000}, function (err, res, body) {
       if (err) {
-        process.send({body: '请求超时，请检查网络环境'})
-      } else {
+        process.send({body: '请求超时，请检查网络环境'});
+      } else if (res.statusCode === 200) {
         var t = htmlDecode(body);
-        console.log(t);
         eval('var obj = ' + t);
         if (obj.err.code === 18) {
-          postElect();
+          setTimeout(function() {
+            postElect();
+          }, 200);
+          
+        } else if (obj.err.code === 0) {
+          process.send({body: {jxbh: jxbh}});
         } else {
           process.send({body: obj});
         }
+      } else {
+        process.send({body: '请求超时，请检查网络环境'});
       }
+
+    
     });
   }
 
