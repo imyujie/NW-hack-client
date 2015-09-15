@@ -1,0 +1,21 @@
+{
+  "main": "index.html",
+  "name": "Shenqi",
+  "window": {
+    "title": "抢课神器",
+    "icon": "shenqi_icon.png",
+    "width": 250,
+    "height": 320,
+    "frame": false,
+    "toolbar": false,
+    "resizable": false
+  },
+  "debug": false,
+  "devDependencies": {
+    "htmldec": "0.0.1",
+    "jpeg-js": "^0.1.1",
+    "md5": "^2.0.0",
+    "pixel-jpg": "0.0.0-alpha.3",
+    "request": "^2.61.0"
+  }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>神器</title>
+    <link rel="stylesheet" type="text/css" href="vendor/animate.css">
+    <link rel="stylesheet" type="text/css" href="lib/style.css">
+    <script src="lib/reset.js"></script>
+    <script src="lib/variables.js"></script>
+    <script src="vendor/ocrad.js"></script>
+    <script src="lib/toast.js"></script>
+    <script src="lib/app.js"></script>
+  </head>
+  <body>
+    <div class="mac-title-bar" style="display: none;">
+      <div class="left-icons">
+        <button class="title-btn" id="close"></button>
+        <button class="title-btn" id="minimize"></button>
+      </div>
+    </div>
+
+    <div class="win-title-bar" style="display: none">
+      <div class="right-icons">
+        <button class="win-title-btn" id="win-close"></button>
+        <button class="win-title-btn" id="win-minimize"></button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div id="login-page" class="page">
+        <form action="" class="login">
+          <!-- <label for="username">Username</label> -->
+          <input class="textfield" type="text" id="username" name="username" placeholder="学号" autocomplete="off">
+          <!-- <label for="password">Password</label> -->
+          <input class="textfield" type="password" id="password" name="password" placeholder="教务系统密码" autocomplete="off">
+          <div class="form-row">
+            <button class="app-btn" id="submit">登录</button>
+          </div>
+        </form>
+      </div>
+      <div id="elect-page" class="page">
+        <div class="limit">
+          <div class="dim">
+            <p>正在选课</p>
+          </div>
+          <div class="content-wrapper">
+            <div class="list-view-wrapper">
+              <div class="list-view">
+                <input class="numberfield textfield" type="text" placeholder="教学班号">
+              </div>
+              <button class="ghost-btn" id="add-class"></button>
+            </div>
+          </div>
+          
+        </div>
+        <div class="limit" style="margin-top: 0">
+          <div class="form-row">
+            <button class="app-btn" id="start">开始抢课</button>
+            <button class="app-btn" id="stop" style="display:none;">停止抢课</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-list">
+    </div>
+  </body>
+</html>
